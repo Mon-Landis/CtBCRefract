@@ -24,8 +24,5 @@ public class AssembledMac extends BaseEntityBlock {
         return null;
     }
 
-    @Override
-    public BlockState getStateAtViewpoint(BlockState state, BlockGetter level, BlockPos pos, Vec3 viewpoint) {
-        return super.getStateAtViewpoint(state, level, pos, viewpoint);
-    }
+
 }
