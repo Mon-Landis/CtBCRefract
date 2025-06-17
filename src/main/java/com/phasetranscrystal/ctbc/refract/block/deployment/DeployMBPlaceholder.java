@@ -1,33 +1,26 @@
 package com.phasetranscrystal.ctbc.refract.block.deployment;
 
-import com.simibubi.create.AllBlocks;
 import com.simibubi.create.content.equipment.wrench.IWrenchable;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.material.PushReaction;
-import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 
 import java.util.Optional;
 
-public abstract class BaseDeployMBMPlaceholder extends Block implements IWrenchable, IBelongingFinder {
+public abstract class DeployMBPlaceholder extends Block implements IWrenchable, IBelongingFinder {
     public static final DirectionProperty BELONG_TRACKER = DirectionProperty.create("belong_tracker", Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST, Direction.UP, Direction.DOWN);
 
-    public BaseDeployMBMPlaceholder(Properties pProperties) {
+    public DeployMBPlaceholder(Properties pProperties) {
         super(pProperties.pushReaction(PushReaction.BLOCK));
     }
 

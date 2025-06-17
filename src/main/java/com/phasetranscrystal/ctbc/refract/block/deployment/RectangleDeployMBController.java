@@ -3,21 +3,23 @@ package com.phasetranscrystal.ctbc.refract.block.deployment;
 import com.phasetranscrystal.ctbc.refract.block.helper.BFSBlockPosIterator;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
-import org.jetbrains.annotations.Nullable;
 
-public abstract class RectangleDeployMBMController extends BaseDeployMBMController {
+public abstract class RectangleDeployMBController extends DeployMBController {
     public static final Direction[] DIRECTIONS = Direction.values();
 
-    protected RectangleDeployMBMController(Properties pProperties) {
+    protected RectangleDeployMBController(Properties pProperties) {
         super(pProperties);
     }
 
-    protected abstract BoundingBox getRegion();
+    public abstract BoundingBox getRegion();
+
+    public BoundingBox getRegion(Direction pDirection) {
+        return rotateBoundingBoxHorizonal(getRegion(), pDirection);
+    }
 
     @Override
     protected boolean isRegionPlaceable(Level gameLevel, BlockPos pos) {
@@ -34,7 +36,7 @@ public abstract class RectangleDeployMBMController extends BaseDeployMBMControll
                     if (level.getBlockState(pos1.relative(direction)).getBlock() instanceof IBelongingFinder finder &&
                             finder.getBelongingClass() == this.getBelongingClass()) {
                         level.setBlockAndUpdate(pos1.relative(direction), getPlaceholderBlock(level, pos, pos1)
-                                .setValue(BaseDeployMBMPlaceholder.BELONG_TRACKER, direction));
+                                .setValue(DeployMBPlaceholder.BELONG_TRACKER, direction));
                         break;
                     }
                 }
@@ -53,5 +55,7 @@ public abstract class RectangleDeployMBMController extends BaseDeployMBMControll
     // @return is consumed
     protected abstract boolean createBlockAt(Level level, BlockPos controllerPos, BlockPos relativePos);
 
-
+    public static BoundingBox rotateBoundingBoxHorizonal(BoundingBox box, Direction direction) {
+        return BoundingBox.orientBox(0, 0, 0, box.minX(), box.minY(), box.minZ(), box.maxX(), box.maxY(), box.maxZ(), direction);
+    }
 }

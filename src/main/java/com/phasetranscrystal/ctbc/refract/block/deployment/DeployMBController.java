@@ -13,13 +13,15 @@ import net.minecraft.world.level.material.PushReaction;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
-import java.util.function.Supplier;
 
-public abstract class BaseDeployMBMController extends BaseEntityBlock implements IWrenchable, IBelongingFinder {
+public abstract class DeployMBController extends BaseEntityBlock implements IWrenchable, IBelongingFinder {
 
-    protected BaseDeployMBMController(Properties pProperties) {
+    protected DeployMBController(Properties pProperties) {
         super(pProperties.pushReaction(PushReaction.BLOCK));
     }
+
+    @Override
+    public abstract @Nullable DeployMBControllerEntity newBlockEntity(BlockPos pPos, BlockState pState);
 
     protected abstract boolean isRegionPlaceable(Level gameLevel, BlockPos pos);
 
