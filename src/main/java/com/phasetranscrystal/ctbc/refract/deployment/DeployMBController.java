@@ -1,4 +1,4 @@
-package com.phasetranscrystal.ctbc.refract.block.deployment;
+package com.phasetranscrystal.ctbc.refract.deployment;
 
 import com.simibubi.create.content.equipment.wrench.IWrenchable;
 import net.minecraft.core.BlockPos;
@@ -7,7 +7,6 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.BaseEntityBlock;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.PushReaction;
 import org.jetbrains.annotations.Nullable;
@@ -23,7 +22,7 @@ public abstract class DeployMBController extends BaseEntityBlock implements IWre
     @Override
     public abstract @Nullable DeployMBControllerEntity newBlockEntity(BlockPos pPos, BlockState pState);
 
-    protected abstract boolean isRegionPlaceable(Level gameLevel, BlockPos pos);
+    protected abstract boolean isRegionPlaceable(Level gameLevel, BlockPos pos, BlockPlaceContext context);
 
     protected abstract void placeBlocks(Level level, BlockState state, BlockPos pos);
 
@@ -45,7 +44,7 @@ public abstract class DeployMBController extends BaseEntityBlock implements IWre
 
     @Override
     public @Nullable BlockState getStateForPlacement(BlockPlaceContext pContext) {
-        return isRegionPlaceable(pContext.getLevel(), pContext.getClickedPos().relative(pContext.getClickedFace())) ?
+        return isRegionPlaceable(pContext.getLevel(), pContext.getClickedPos().relative(pContext.getClickedFace()), pContext) ?
                 super.getStateForPlacement(pContext) : null;
     }
 }

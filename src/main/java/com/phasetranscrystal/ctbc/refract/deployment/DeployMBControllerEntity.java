@@ -1,4 +1,4 @@
-package com.phasetranscrystal.ctbc.refract.block.deployment;
+package com.phasetranscrystal.ctbc.refract.deployment;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

@@ -1,4 +1,4 @@
-package com.phasetranscrystal.ctbc.refract.block.helper;
+package com.phasetranscrystal.ctbc.refract.helper;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -17,6 +17,10 @@ public class BFSBlockPosIterator {
      * @return 按曼哈顿距离顺序的BlockPos流
      */
     public static Stream<BlockPos> streamBlocksBFS(BoundingBox box) {
+        return StreamSupport.stream(new BFSSpliterator(box), false);
+    }
+
+    public static Stream<BlockPos> streamBlocksBFSDedicated(BoundingBox box) {
         return StreamSupport.stream(new BFSSpliterator(box), false);
     }
 

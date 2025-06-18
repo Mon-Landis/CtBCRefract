@@ -1,4 +1,4 @@
-package com.phasetranscrystal.ctbc.refract.block.deployment;
+package com.phasetranscrystal.ctbc.refract.deployment;
 
 import com.simibubi.create.content.equipment.wrench.IWrenchable;
 import net.minecraft.core.BlockPos;
