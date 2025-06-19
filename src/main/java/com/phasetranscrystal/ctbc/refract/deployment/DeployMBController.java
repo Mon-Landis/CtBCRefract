@@ -44,7 +44,7 @@ public abstract class DeployMBController extends BaseEntityBlock implements IWre
 
     @Override
     public @Nullable BlockState getStateForPlacement(BlockPlaceContext pContext) {
-        return isRegionPlaceable(pContext.getLevel(), pContext.getClickedPos().relative(pContext.getClickedFace()), pContext) ?
+        return isRegionPlaceable(pContext.getLevel(), pContext.getClickedPos(), pContext) ?
                 super.getStateForPlacement(pContext) : null;
     }
 }

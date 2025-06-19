@@ -38,13 +38,15 @@ public class BoundingBoxHelper {
 //                LevelRenderer.renderLineBox(ms, vertexconsumer, bound, 1, 0.364F, 0.423F, 1);
 //            }
 
+            BlockPos pos = be.getBlockPos();
+            BoundingBox boundingBox = be.getBoundingBox();
+            String string = ForgeRegistries.BLOCK_ENTITY_TYPES.getKey(be.getType()).toLanguageKey();
+
             DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
-                BlockPos pos = be.getBlockPos();
-                String string = ForgeRegistries.BLOCK_ENTITY_TYPES.getKey(be.getType()).toString();
-                Outliner.getInstance().showAABB(Pair.of(string + "/controller", pos), new AABB(be.getBlockPos()))
+                Outliner.getInstance().showAABB(Pair.of(string + ".controller", pos), new AABB(pos))
                         .colored(0xFF_ff5d6c);
 
-                Outliner.getInstance().showAABB(Pair.of(string + "/bound", pos), from(be.getBoundingBox()))
+                Outliner.getInstance().showAABB(Pair.of(string + ".bound", pos), from(boundingBox))
                         .colored(0xFF_3589FF);
             });
         }

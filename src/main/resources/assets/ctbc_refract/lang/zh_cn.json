@@ -1,3 +1,4 @@
 {
-  "block.ctbc_refract.assembly_mac_controller" : "组装机"
+  "block.ctbc_refract.assembly_mac": "组装机",
+  "ctbc.message_meta.not_enough_space": "区域空间不足: 类型 = %s, 区域 = %s"
 }

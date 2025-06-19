@@ -1,3 +1,4 @@
 {
-  "block.ctbc_refract.assembly_mac_controller" : "Assembly Machine"
+  "block.ctbc_refract.assembly_mac" : "Assembly Machine",
+  "ctbc.message_meta.not_enough_space" : "Not enough space: type = %s, region = %s"
 }
